@@ -79,4 +79,25 @@ module.exports = {
     }
     return luxon.DateTime.local().toFormat(fmt);
   },
+  fromNow: (ts) => {
+    if (ts === undefined) {
+      throw Error('time.fromNow(ts) :: Missing parameter "ts"');
+    }
+    if (typeof ts !== 'number' || Number.isNaN(ts) === true) {
+      throw Error('time.fromNow(ts) :: Invalid parameter "ts"');
+    }
+    return luxon.DateTime.fromMillis(ts).toRelative();
+  },
+  fromTime: (tsFrom, tsTo) => {
+    if (tsFrom === undefined || tsTo === undefined) {
+      throw Error('time.fromTime(tsFrom, tsTo) :: Missing parameter "tsFrom" or "tsTo"');
+    }
+    if (typeof tsFrom !== 'number' || Number.isNaN(tsFrom) === true) {
+      throw Error('time.fromTime(tsFrom, tsTo) :: Invalid parameter "tsFrom"');
+    }
+    if (typeof tsTo !== 'number' || Number.isNaN(tsTo) === true) {
+      throw Error('time.fromTime(tsFrom, tsTo) :: Invalid parameter "tsTo"');
+    }
+    return luxon.DateTime.fromMillis(tsTo).toRelative({ base: luxon.DateTime.fromMillis(tsFrom) });
+  },
 };

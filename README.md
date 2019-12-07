@@ -20,6 +20,11 @@ yarn add @davalapar/time
 - `time.fmt(fmt, ts?)` - gets current custom format
   - required `fmt` format parameter
   - optional `ts` timestamp parameter
+- `time.fromNow(ts?)` - humanized format relative to now
+  - optional `ts` timestamp parameter
+- `time.fromTime(tsFrom, tsTo)` - humanized format relative to specified timestamp
+  - required `tsFrom` timestamp parameter
+  - required `tsTo` timestamp parameter
 
 ```js
 const time = require('@davalapar/time');
@@ -29,6 +34,9 @@ console.log(time.iso(1575683330429)); // 2019-12-07T09:48:50.429+08:00
 console.log(time.rfc(1575683330429)); // Sat, 07 Dec 2019 09:48:50 +0800
 console.log(time.http(1575683330429)); // Sat, 07 Dec 2019 01:48:50 GMT
 console.log(time.fmt('EEE, MMM d, yyyy hh:mm:ss a', 1575683330429)); // Saturday, Dec 7, 2019 09:48:50 AM
+console.log(time.fromNow(time.now() - 5000)); // 5 seconds ago
+console.log(time.fromNow(time.now() + 5000)); // in 5 seconds
+console.log(time.fromTime(time.now() - 5000, time.now() + 5000)); // in 10 seconds
 ```
 
 #### References
