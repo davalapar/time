@@ -1,10 +1,8 @@
-/* eslint-disable no-console */
-
 const luxon = require('luxon');
 
 luxon.Settings.defaultZoneName = 'UTC';
 
-const time = {
+module.exports = {
   now: () => luxon.DateTime.local().toMillis(),
   tz: (tz) => {
     if (tz !== undefined) {
@@ -82,5 +80,3 @@ const time = {
     return luxon.DateTime.local().toFormat(fmt);
   },
 };
-
-module.exports = time;
