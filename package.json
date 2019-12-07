@@ -1,0 +1,11 @@
+{
+  "name": "@davalapar/time",
+  "version": "1.0.0",
+  "description": "time utils, convenience wrapper for luxon",
+  "main": "index.js",
+  "author": "davalapar <davalapar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "luxon": "^1.21.3"
+  }
+}
