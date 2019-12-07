@@ -8,16 +8,16 @@ time utils, convenience wrapper for luxon
 yarn add @davalapar/time
 ```
 
-- time.tz(tz?) - gets / sets time zone
+- `time.tz(tz?)` - gets / sets time zone
   - optional `tz` time zone parameter
-- time.now() - gets current unix timestamp in milliseconds
-- time.iso(ts?) - gets current iso format
+- `time.now()` - gets current unix timestamp in milliseconds
+- `time.iso(ts?)` - gets current iso format
   - optional `ts` timestamp parameter
-- time.rfc(ts?) - gets current rfc2822 format
+- `time.rfc(ts?)` - gets current rfc2822 format
   - optional `ts` timestamp parameter
-- time.http(ts?) - gets current http format
+- `time.http(ts?)` - gets current http format
   - optional `ts` timestamp parameter
-- time.fmt(fmt, ts?) - gets current custom format
+- `time.fmt(fmt, ts?)` - gets current custom format
   - required `fmt` format parameter
   - optional `ts` timestamp parameter
 
