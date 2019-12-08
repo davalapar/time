@@ -67,6 +67,15 @@ module.exports = {
     }
     return luxon.DateTime.local().toHTTP();
   },
+  sql: (ts) => {
+    if (ts !== undefined) {
+      if (typeof ts !== 'number' || Number.isNaN(ts) === true) {
+        throw Error('time.sql(ts?) :: Invalid parameter "ts"');
+      }
+      return luxon.DateTime.fromMillis(ts).toSQL();
+    }
+    return luxon.DateTime.local().toHTTP();
+  },
   fmt: (fmt, ts) => {
     if (typeof fmt !== 'string') {
       throw Error('time.fmt(fmt, ts?) :: Invalid parameter "fmt"');
@@ -99,5 +108,57 @@ module.exports = {
       throw Error('time.fromTime(tsFrom, tsTo) :: Invalid parameter "tsTo"');
     }
     return luxon.DateTime.fromMillis(tsTo).toRelative({ base: luxon.DateTime.fromMillis(tsFrom) });
+  },
+  fromISO: (str) => {
+    if (str === undefined) {
+      throw Error('time.fromISO(str) :: Missing parameter "str"');
+    }
+    if (typeof str !== 'string') {
+      throw Error('time.fromISO(str) :: Invalid parameter "str"');
+    }
+    const dt = luxon.DateTime.fromISO(str);
+    if (dt.isValid === false) {
+      throw Error('time.fromISO(str) :: Invalid parameter "str", invalid format');
+    }
+    return dt.toMillis();
+  },
+  fromRFC: (str) => {
+    if (str === undefined) {
+      throw Error('time.fromRFC(str) :: Missing parameter "str"');
+    }
+    if (typeof str !== 'string') {
+      throw Error('time.fromRFC(str) :: Invalid parameter "str"');
+    }
+    const dt = luxon.DateTime.fromRFC2822(str);
+    if (dt.isValid === false) {
+      throw Error('time.fromRFC(str) :: Invalid parameter "str", invalid format');
+    }
+    return dt.toMillis();
+  },
+  fromHTTP: (str) => {
+    if (str === undefined) {
+      throw Error('time.fromHTTP(str) :: Missing parameter "str"');
+    }
+    if (typeof str !== 'string') {
+      throw Error('time.fromHTTP(str) :: Invalid parameter "str"');
+    }
+    const dt = luxon.DateTime.fromHTTP(str);
+    if (dt.isValid === false) {
+      throw Error('time.fromHTTP(str) :: Invalid parameter "str", invalid format');
+    }
+    return dt.toMillis();
+  },
+  fromSQL: (str) => {
+    if (str === undefined) {
+      throw Error('time.fromSQL(str) :: Missing parameter "str"');
+    }
+    if (typeof str !== 'string') {
+      throw Error('time.fromSQL(str) :: Invalid parameter "str"');
+    }
+    const dt = luxon.DateTime.fromSQL(str);
+    if (dt.isValid === false) {
+      throw Error('time.fromSQL(str) :: Invalid parameter "str", invalid format');
+    }
+    return dt.toMillis();
   },
 };
