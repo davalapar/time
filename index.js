@@ -1,7 +1,5 @@
 const luxon = require('luxon');
 
-luxon.Settings.defaultZoneName = 'UTC';
-
 module.exports = {
   now: () => luxon.DateTime.local().toMillis(),
   tz: (tz) => {

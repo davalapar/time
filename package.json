@@ -1,6 +1,6 @@
 {
   "name": "@davalapar/time",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "time utils, convenience wrapper for luxon",
   "main": "index.js",
   "author": "davalapar <davalapar@gmail.com>",
